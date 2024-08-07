@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Select Your Favorite Genres</h2>
+<form action="{% url 'recommendations' %}" method="post">
+    {% csrf_token %}
+    <div>
+        {% for genre in genres %}
+            <label>
+                <input type="checkbox" name="genres" value="{{ genre }}">{{ genre }}
+            </label>
+        {% endfor %}
+    </div>
+    <button type="submit">Get Recommendations</button>
+</form>
+{% endblock %}
